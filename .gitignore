@@ -1,0 +1,27 @@
+# exclude all compiler an Maven relevant files
+*.class
+*.iml
+*.releaseBackup
+*.cache
+.factorypath
+.classpath
+.project
+.mvn/
+git.properties
+
+# exclude all build directories
+target
+bin
+
+# IntelliJ
+.idea
+
+# eclipse settings von den Projekten
+.settings/*
+# exclude some Eclipse settings files from exclusion that we want to keep with formatter and compiler settings
+!.settings/org.eclipse.jdt.core.prefs
+!.settings/org.eclipse.jdt.ui.prefs
+
+# exclude all generated mp4 and flv video output files
+.mp4
+.flv
