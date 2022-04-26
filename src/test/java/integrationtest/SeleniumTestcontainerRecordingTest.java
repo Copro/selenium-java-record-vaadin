@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.junit.Rule;
 import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxOptions;
@@ -18,11 +19,14 @@ import org.testcontainers.containers.VncRecordingContainer.VncRecordingFormat;
 
 
 /**
- * Simple test class to record a session with vaadin.com.
+ * Simple test class to record a session with vaadin.com using Firefox driver.
+ *
+ * Disabled because there is a problem with Firefox browser on smallest VPS 200 headless host.
  *
  * @author Copro
  *
  */
+@Disabled
 public class SeleniumTestcontainerRecordingTest {
 
 	private File localDir = new java.io.File(".");
@@ -34,7 +38,7 @@ public class SeleniumTestcontainerRecordingTest {
 
 	@Test
 	public void testWebDriverBackedSelenium() throws InterruptedException {
-		
+
 		RemoteWebDriver driver = firefox.getWebDriver();
 		System.out.println("LOG Video Output to: " + localDir.getAbsolutePath());
 

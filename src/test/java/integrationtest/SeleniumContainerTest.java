@@ -1,0 +1,63 @@
+
+package integrationtest;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.testcontainers.containers.BrowserWebDriverContainer.VncRecordingMode.SKIP;
+
+import java.io.File;
+
+import org.junit.Rule;
+import org.junit.Test;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testcontainers.containers.BrowserWebDriverContainer;
+
+/**
+ * Simple example of plain Selenium usage skipping recording and using the Chrome browser.
+ *
+ * @author Copro
+ *
+ */
+public class SeleniumContainerTest {
+
+	private final static String NETCUP_FORUM_URL = "https://forum.netcup.de/";
+	private final static String SEARCH_BUTTON_ID = "userPanelSearchButton";
+	private final static String SEARCH_INPUT_ID = "pageHeaderSearchInput";
+
+	@Rule
+	@SuppressWarnings("rawtypes")
+	public BrowserWebDriverContainer chrome = new BrowserWebDriverContainer()
+			.withCapabilities(new ChromeOptions())
+			.withRecordingMode(SKIP, new File("target"));
+
+	/**
+	 * Simple test opening the netcup Forum and searching for 'Selenium'.
+	 */
+	@Test
+	public void simplePlainSeleniumTest() throws InterruptedException {
+		RemoteWebDriver driver = chrome.getWebDriver();
+
+		System.out.println("Start Chromea and open URL: " + NETCUP_FORUM_URL);
+		driver.get(NETCUP_FORUM_URL);
+
+		System.out.println("Click the Search button with ID: " + SEARCH_BUTTON_ID);
+		WebElement searchButton = driver.findElementById(SEARCH_BUTTON_ID);
+		searchButton.click();
+
+		System.out.println("Fill in the search input element: " + SEARCH_INPUT_ID);
+		WebElement searchInput = driver.findElementById(SEARCH_INPUT_ID);
+		searchInput.sendKeys("Selenium");
+		searchInput.submit();
+
+		System.out.println("Waiting 2000 milliseconds.");
+		Thread.sleep(200);
+
+		System.out.println("Verifying that the Thread 'Windows auf VPS 200 ?' shows up in the search results.");
+		assertThat(driver.getPageSource())
+				.as("The Thread 'Windows auf VPS 200 ?' shows up in the search results.")
+				.contains("Windows auf VPS 200 ?");
+
+		System.out.println("End. We are Done here.");
+	}
+}

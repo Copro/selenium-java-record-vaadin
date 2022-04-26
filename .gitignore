@@ -22,6 +22,10 @@ bin
 !.settings/org.eclipse.jdt.core.prefs
 !.settings/org.eclipse.jdt.ui.prefs
 
+# exclude all annotation processing folders
+/.apt_generated/
+/.apt_generated_tests/
+
 # exclude all generated mp4 and flv video output files
 .mp4
 .flv
