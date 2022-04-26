@@ -1,16 +1,20 @@
 selenium-java-record-vaadin
 ===========================
 
-Record the following as MP4 video using selenium Testcontainer with Firefox browser.
+The sample project uses Java Selenium JUnit and Testcontainer with Chrome browser. Recording the session as video (VNC | MP4) is skipped because of bad ffmpeg performance on small headless VPS servers.
 
 Selenium TestCase:
-- Open vaadin.com
-- Login
-- Switch to "My Certifications"
+- Open netcup Forum URL
+- Click the search button
+- Enter "Selenium" and wait
+- Verify some text and results
 
+Preconditions
+-------------
+A small VPS or server with Java, Maven and Docker setup.
 
 Run the test
 ------------
-To run all tests - currently just one recording test:
+To run all tests - currently just the one described above:
 
 `mvn test`
