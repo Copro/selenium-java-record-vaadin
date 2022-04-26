@@ -21,12 +21,9 @@ import org.testcontainers.containers.VncRecordingContainer.VncRecordingFormat;
 /**
  * Simple test class to record a session with vaadin.com using Firefox driver.
  *
- * Disabled because there is a problem with Firefox browser on smallest VPS 200 headless host.
- *
  * @author Copro
  *
  */
-@Disabled
 public class SeleniumTestcontainerRecordingTest {
 
 	private File localDir = new java.io.File(".");
@@ -36,7 +33,12 @@ public class SeleniumTestcontainerRecordingTest {
 			.withCapabilities(new FirefoxOptions())
 			.withRecordingMode(VncRecordingMode.RECORD_ALL, localDir, VncRecordingFormat.MP4);
 
+	/**
+	 * Disabled because there might be a problem with Firefox browser on smallest VPS 200 headless host and the recording performance where
+	 * ffmpeg is used.
+	 */
 	@Test
+	@Disabled
 	public void testWebDriverBackedSelenium() throws InterruptedException {
 
 		RemoteWebDriver driver = firefox.getWebDriver();
