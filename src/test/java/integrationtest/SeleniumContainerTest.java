@@ -58,7 +58,8 @@ public class SeleniumContainerTest {
 				.as("The Thread 'Windows auf VPS 200 ?' shows up in the search results.")
 				.contains("Windows auf VPS 200 ?");
 
-		System.out.println("End. We are Done here and quitting WebDriver.");
+		System.out.println("End. We are Done here and quitting WebDriver and stopping container.");
 		driver.quit();
+		chrome.stop();
 	}
 }
