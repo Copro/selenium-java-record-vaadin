@@ -1,7 +1,7 @@
 selenium-java-record-vaadin
 ===========================
 
-The sample project uses Java Selenium JUnit and Testcontainer with Chrome browser. Recording the session as video (VNC | MP4) is skipped because of bad ffmpeg performance on small headless VPS servers.
+The sample project uses Java Selenium JUnit and Testcontainer with Chrome browser. Recording the VNC Testcontainer session as video (FLV | MP4) is skipped because of bad ffmpeg performance on small headless VPS servers.
 
 Selenium TestCase:
 - Open netcup Forum URL

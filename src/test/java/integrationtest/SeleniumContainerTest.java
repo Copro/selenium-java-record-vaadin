@@ -2,7 +2,6 @@
 package integrationtest;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.testcontainers.containers.BrowserWebDriverContainer.VncRecordingMode.SKIP;
 
 import java.io.File;
 
@@ -12,6 +11,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testcontainers.containers.BrowserWebDriverContainer;
+import org.testcontainers.containers.BrowserWebDriverContainer.VncRecordingMode;
 
 /**
  * Simple example of plain Selenium usage skipping recording and using the Chrome browser.
@@ -29,7 +29,7 @@ public class SeleniumContainerTest {
 	@SuppressWarnings("rawtypes")
 	public BrowserWebDriverContainer chrome = new BrowserWebDriverContainer()
 			.withCapabilities(new ChromeOptions())
-			.withRecordingMode(SKIP, new File("target"));
+			.withRecordingMode(VncRecordingMode.RECORD_ALL, new File("target"));
 
 	/**
 	 * Simple test opening the netcup Forum and searching for 'Selenium'.
