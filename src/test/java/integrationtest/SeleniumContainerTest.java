@@ -38,7 +38,7 @@ public class SeleniumContainerTest {
 	public void simplePlainSeleniumTest() throws InterruptedException {
 		RemoteWebDriver driver = chrome.getWebDriver();
 
-		System.out.println("Start Chromea and open URL: " + NETCUP_FORUM_URL);
+		System.out.println("Start Chrome and open URL: " + NETCUP_FORUM_URL);
 		driver.get(NETCUP_FORUM_URL);
 
 		System.out.println("Click the Search button with ID: " + SEARCH_BUTTON_ID);
@@ -50,7 +50,7 @@ public class SeleniumContainerTest {
 		searchInput.sendKeys("Selenium");
 		searchInput.submit();
 
-		System.out.println("Waiting 2000 milliseconds.");
+		System.out.println("Waiting 200 milliseconds.");
 		Thread.sleep(200);
 
 		System.out.println("Verifying that the Thread 'Windows auf VPS 200 ?' shows up in the search results.");
@@ -58,6 +58,7 @@ public class SeleniumContainerTest {
 				.as("The Thread 'Windows auf VPS 200 ?' shows up in the search results.")
 				.contains("Windows auf VPS 200 ?");
 
-		System.out.println("End. We are Done here.");
+		System.out.println("End. We are Done here and quitting WebDriver.");
+		driver.quit();
 	}
 }
