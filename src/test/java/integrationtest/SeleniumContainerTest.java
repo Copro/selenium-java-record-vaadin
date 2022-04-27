@@ -7,7 +7,6 @@ import java.io.File;
 
 import org.junit.Rule;
 import org.junit.Test;
-import org.junit.jupiter.api.AfterAll;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -30,7 +29,7 @@ public class SeleniumContainerTest {
 	@SuppressWarnings("rawtypes")
 	public BrowserWebDriverContainer chrome = new BrowserWebDriverContainer()
 			.withCapabilities(new ChromeOptions())
-			.withRecordingMode(VncRecordingMode.RECORD_ALL, new File("target"));
+			.withRecordingMode(VncRecordingMode.SKIP, new File("target"));
 
 	/**
 	 * Simple test opening the netcup Forum and searching for 'Selenium'.
@@ -58,11 +57,9 @@ public class SeleniumContainerTest {
 		assertThat(driver.getPageSource())
 				.as("The Thread 'Windows auf VPS 200 ?' shows up in the search results.")
 				.contains("Windows auf VPS 200 ?");
+
+		System.out.println("End. We are Done here and quitting WebDriver");
+		driver.quit();
 	}
 
-	@AfterAll
-	public void tearDown() {
-		System.out.println("End. We are Done here and quitting WebDriver by stopping container");
-		chrome.stop();
-	}
 }
